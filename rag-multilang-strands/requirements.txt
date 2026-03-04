@@ -5,3 +5,9 @@ langdetect
 faiss-cpu
 pypdf2
 python-docx
+pdfplumber
+
+# backend server
+fastapi
+uvicorn[standard]
+python-multipart

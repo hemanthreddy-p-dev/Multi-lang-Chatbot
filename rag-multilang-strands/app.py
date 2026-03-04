@@ -70,3 +70,19 @@ if prompt:
                 st.markdown(content)
         
         st.session_state.history.append(("assistant", res))
+
+
+if __name__ == "__main__":
+    import sys
+    try:
+        from streamlit.web import cli as stcli
+    except Exception:
+        try:
+            import streamlit.cli as stcli
+        except Exception:
+            stcli = None
+    if stcli is not None:
+        sys.argv = ["streamlit", "run", __file__]
+        sys.exit(stcli.main())
+    else:
+        print("Streamlit CLI not available. Please run with `streamlit run app.py`")

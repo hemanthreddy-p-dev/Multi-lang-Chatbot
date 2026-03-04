@@ -54,11 +54,11 @@ def answer(user_message: str) -> str:
     except Exception:
         max_score = 0.0
     
-    print(f"[DEBUG] Retrieval confidence score: {max_score:.4f} (threshold: 0.5)")
+    print(f"[DEBUG] Retrieval confidence score: {max_score:.4f} (threshold: 0.3)")
 
     # 3) Confidence gate: if too low, escalate to human (prevent hallucination)
-    if max_score < 0.5:
-        print(f"[DEBUG] Confidence too low ({max_score:.4f} < 0.5), returning handoff in {user_lang}")
+    if max_score < 0.3:
+        print(f"[DEBUG] Confidence too low ({max_score:.4f} < 0.3), returning handoff in {user_lang}")
         return _translate_handoff(HANDOFF_MESSAGE, user_lang)
 
     print(f"[DEBUG] Confidence sufficient, generating response in {user_lang}")
